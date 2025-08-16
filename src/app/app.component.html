@@ -1,0 +1,31 @@
+<style>
+  :host {
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+      "Segoe UI Symbol";
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: 14px;
+    text-align: center;
+  }
+</style>
+
+<div class="content" role="main">
+  <h1>Welcome to {{ title }}!</h1>
+  <input
+    [value]="newTodoText()"
+    (input)="handleInput($event)"
+    placeholder="Add New Todo"
+  />
+
+  <button (click)="addTodo()">Add New Todo</button>
+  <p>Total Todos: {{ total() }}</p>
+  <ul>
+    <li *ngFor="let todo of todos()">
+      {{ todo.text }}
+      <button (click)="deleteTodo(todo.id)">Delete Todo</button>
+    </li>
+  </ul>
+</div>
+<router-outlet />
